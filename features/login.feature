@@ -1,6 +1,9 @@
-Feature: Open browser and visit site
+Feature: Login functionality
 
-  Scenario: Open example website
-    Given I open the browser
-    When I navigate to "https://example.com"
-    Then I should see the page title "Example Domain"
+  @smoke
+  Scenario: Successful login to SauceDemo
+    Given User opens the browser
+    And User navigates to SauceDemo login page
+    When User enters valid username and password
+    And User clicks on login button
+    Then User should see the products page
