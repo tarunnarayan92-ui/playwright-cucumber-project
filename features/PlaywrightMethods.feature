@@ -1,6 +1,6 @@
-Feature: Playwright Locators
+Feature: Playwright Methods
 
-  Scenario: User interacts with product using Playwright locators
+  Scenario: User Verify Playwright Methods
     Given User navigates to SauceDemo login page
     When User logs in with username "standard_user" and password "secret_sauce"
     Then User should land on inventory page

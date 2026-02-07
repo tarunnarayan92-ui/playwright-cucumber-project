@@ -6,8 +6,12 @@
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js",
-    "test:cucumber": "cucumber-js",
-    "test:tags": "cucumber-js --tags"
+    "test:smoke": "cucumber-js --tags \"@smoke\"",
+    "test:regression": "cucumber-js --tags \"@regression\"",
+    "test:login": "cucumber-js --tags \"@login\"",
+    "test:inventory": "cucumber-js --tags \"@inventory\"",
+    "test:checkout": "cucumber-js --tags \"@checkout\"",
+    "test:exclude-regression": "cucumber-js --tags \"not @regression\""
   },
   "keywords": [
     "pw",
