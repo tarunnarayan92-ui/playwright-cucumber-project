@@ -13,4 +13,18 @@ export class InventoryPage {
   async removeFirstProduct() {
     await this.page.locator('button:has-text("Remove")').first().click();
   }
+
+  async openMenu() {
+    await this.page.locator("#react-burger-menu-btn").click();
+  }
+
+  async clickLogout() {
+    await this.page.locator("#logout_sidebar_link").click();
+  }
+
+  async selectSort(optionValue: string) {
+    await this.page
+      .locator('[data-test="product-sort-container"]')
+      .selectOption(optionValue);
+  }
 }

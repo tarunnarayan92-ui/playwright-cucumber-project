@@ -6,4 +6,8 @@ export class CartPage {
   async goToCheckout() {
     await this.page.getByRole("button", { name: "Checkout" }).click();
   }
+
+  async continueShopping() {
+    await this.page.locator('[data-test="continue-shopping"]').click();
+  }
 }
