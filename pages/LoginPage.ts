@@ -4,9 +4,11 @@ export class LoginPage {
   constructor(private page: Page) {}
 
   async navigate() {
-    await this.page.goto("https://www.saucedemo.com/");
+    await this.page.goto("https://www.saucedemo.com/", {
+      waitUntil: "domcontentloaded",
+      timeout: 60000,
+    });
   }
-
   async login(username: string, password: string) {
     await this.page.getByPlaceholder("Username").fill(username);
     await this.page.getByPlaceholder("Password").fill(password);
