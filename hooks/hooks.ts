@@ -1,12 +1,21 @@
 import { Before, After, setDefaultTimeout } from "@cucumber/cucumber";
-import { chromium, Browser, Page } from "@playwright/test";
+import { chromium, firefox, webkit, Browser } from "@playwright/test";
 
-setDefaultTimeout(60 * 1000); // ⬅️ 60 seconds (SDET-2 standard)
+setDefaultTimeout(60 * 1000);
 
 let browser: Browser;
 
 Before(async function () {
-  browser = await chromium.launch({ headless: false });
+  const browserName = this.parameters.browser;
+
+  if (browserName === "firefox") {
+    browser = await firefox.launch({ headless: false });
+  } else if (browserName === "webkit") {
+    browser = await webkit.launch({ headless: false });
+  } else {
+    browser = await chromium.launch({ headless: false });
+  }
+
   const context = await browser.newContext();
   this.page = await context.newPage();
 });

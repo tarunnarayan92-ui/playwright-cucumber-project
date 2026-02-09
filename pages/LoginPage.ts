@@ -14,6 +14,7 @@ export class LoginPage {
   }
 
   async clickLogin() {
-    await this.page.getByRole("button", { name: "Login" }).click();
+    // stable locator for all browsers
+    await this.page.locator('[data-test="login-button"]').click();
   }
 }

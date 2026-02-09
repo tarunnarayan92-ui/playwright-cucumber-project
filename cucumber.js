@@ -1,19 +1,15 @@
 module.exports = {
   default: {
-    paths: ["features/**/*.feature"],
-
     require: [
-      "hooks/**/*.ts",
-      "step-definitions/**/*.ts"
+      "step-definitions/**/*.ts",
+      "hooks/**/*.ts"
     ],
-
     requireModule: ["ts-node/register"],
-
-    format: [
-      "progress",
-      "html:reports/cucumber-report.html"
-    ],
-
-    publishQuiet: true
+    format: ["progress", "html:reports/cucumber-report.html"],
+    paths: ["features/**/*.feature"],
+    parallel: 3,   // number of workers
+    worldParameters: {
+      browser: process.env.BROWSER || "chromium"
+    }
   }
 };
