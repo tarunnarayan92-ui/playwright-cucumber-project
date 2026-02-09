@@ -14,24 +14,18 @@ Given("User is logged in", async function () {
   inventory = new InventoryPage(this.page);
 });
 
-When(
-  "User adds {int} products to cart",
-  async function (count: number) {
-    await inventory.addProducts(count);
-  }
-);
+When("User adds {int} products to cart", async function (count: number) {
+  await inventory.addProducts(count);
+});
 
 When("User removes the product", async function () {
   await inventory.removeFirstProduct();
 });
 
-Then(
-  "Cart badge should show {int}",
-  async function (count: number) {
-    const badge = this.page.locator(".shopping_cart_badge");
-    await expect(badge).toHaveText(count.toString());
-  }
-);
+Then("Cart badge should show {int}", async function (count: number) {
+  const badge = this.page.locator(".shopping_cart_badge");
+  await expect(badge).toHaveText(count.toString());
+});
 
 Then("Cart badge should not be visible", async function () {
   await expect(this.page.locator(".shopping_cart_badge")).toHaveCount(0);

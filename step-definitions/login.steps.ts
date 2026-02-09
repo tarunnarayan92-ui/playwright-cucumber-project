@@ -14,7 +14,7 @@ When(
   "User logs in with username {string} and password {string}",
   async function (username: string, password: string) {
     await loginPage.login(username, password);
-  }
+  },
 );
 
 When("User clicks login without entering credentials", async function () {
@@ -33,5 +33,5 @@ Then(
     const error = this.page.locator('[data-test="error"]');
     await expect(error).toBeVisible();
     await expect(error).toHaveText(errorMessage);
-  }
+  },
 );

@@ -21,19 +21,13 @@ Given("User has product in cart", async function () {
   checkout = new CheckoutPage(this.page);
 });
 
-When(
-  "User completes checkout with valid details",
-  async function () {
-    await checkout.completeCheckout("John", "Doe", "500001");
-  }
-);
+When("User completes checkout with valid details", async function () {
+  await checkout.completeCheckout("John", "Doe", "500001");
+});
 
-When(
-  "User tries checkout without first name",
-  async function () {
-    await checkout.checkoutWithoutFirstName();
-  }
-);
+When("User tries checkout without first name", async function () {
+  await checkout.checkoutWithoutFirstName();
+});
 
 Then("Order confirmation page should be displayed", async function () {
   await expect(this.page).toHaveURL(/checkout-complete/);
@@ -42,8 +36,6 @@ Then("Order confirmation page should be displayed", async function () {
 Then(
   "Checkout error should be displayed {string}",
   async function (message: string) {
-    await expect(
-      this.page.locator('[data-test="error"]')
-    ).toHaveText(message);
-  }
+    await expect(this.page.locator('[data-test="error"]')).toHaveText(message);
+  },
 );

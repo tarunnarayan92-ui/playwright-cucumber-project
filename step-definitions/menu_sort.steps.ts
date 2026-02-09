@@ -4,7 +4,7 @@ import { InventoryPage } from "../pages/InventoryPage";
 
 let inventory: InventoryPage;
 
-When('User selects {string} sorting option', async function (option: string) {
+When("User selects {string} sorting option", async function (option: string) {
   inventory = new InventoryPage(this.page);
   await inventory.selectSort(option);
 });
