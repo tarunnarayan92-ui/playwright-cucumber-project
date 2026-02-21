@@ -5,9 +5,21 @@ module.exports = {
       "hooks/**/*.ts"
     ],
     requireModule: ["ts-node/register"],
-    format: ["progress", "html:reports/cucumber-report.html"],
+
+    format: [
+      "progress",
+      "html:reports/cucumber-report.html",
+      "allure-cucumberjs/reporter"
+    ],
+
+    formatOptions: {
+      resultsDir: "reports/allure-results"
+    },
+
     paths: ["features/**/*.feature"],
-    parallel: 3,   // number of workers
+
+    parallel: 3,   // workers
+
     worldParameters: {
       browser: process.env.BROWSER || "chromium"
     }
