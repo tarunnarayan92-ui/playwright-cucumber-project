@@ -8,13 +8,17 @@ module.exports = {
       "json:reports/cucumber-report.json",
       "allure-cucumberjs/reporter",
     ],
+
     formatOptions: {
       resultsDir: "reports/allure-results",
     },
 
     paths: ["features/**/*.feature"],
 
-    parallel: 3, // workers
+    publishQuiet: true, // prevents silent skip issues
+    failFast: false, // ensures detection continues
+
+    parallel: 3,
 
     worldParameters: {
       browser: process.env.BROWSER || "chromium",

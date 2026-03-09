@@ -1,13 +1,28 @@
 export default {
   default: {
     require: [
-      "features/step-definitions/**/*.ts",
-      "features/hooks/**/*.ts"
+      "step-definitions/**/*.ts",
+      "hooks/**/*.ts"
     ],
+
     requireModule: ["ts-node/register"],
+
     format: [
       "progress",
-      "html:reports/cucumber-report.html"
-    ]
+      "json:reports/cucumber-report.json",
+      "allure-cucumberjs/reporter"
+    ],
+
+    formatOptions: {
+      resultsDir: "reports/allure-results"
+    },
+
+    paths: ["features/**/*.feature"],
+
+    parallel: 3,
+
+    publishQuiet: true,
+
+    failFast: false
   }
 };

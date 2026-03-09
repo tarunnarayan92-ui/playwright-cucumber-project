@@ -1,3 +1,4 @@
+import { Then } from "@cucumber/cucumber";
 import { Page } from "@playwright/test";
 
 export class AlertsPage {

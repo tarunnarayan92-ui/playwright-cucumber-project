@@ -26,7 +26,8 @@
     "report:generate": "allure generate reports/allure-results --clean -o reports/allure-report",
     "report:open": "allure open reports/allure-report",
     "report:serve": "allure serve reports/allure-results",
-    "report:cucumber": "node generate-report.js"
+    "report:cucumber": "node generate-report.js",
+    "test:flipkart": "cucumber-js --tags \"@flipkart\""
   },
   "keywords": [
     "pw",
@@ -47,5 +48,10 @@
     "npm-run-all": "^1.1.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@playwright/mcp": "^0.0.68",
+    "playwright-extra": "^4.3.6",
+    "playwright-extra-plugin-stealth": "^0.0.1"
   }
 }
