@@ -12,7 +12,7 @@ tools:
   - playwright-test/test_debug
   - playwright-test/test_list
   - playwright-test/test_run
-model: claude-sonnet-4-5
+model: GPT-4o (copilot)
 mcp-servers:
   playwright-test:
     type: stdio
