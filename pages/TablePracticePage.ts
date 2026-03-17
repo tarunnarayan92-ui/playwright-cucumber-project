@@ -27,19 +27,20 @@ export class TablePracticePage {
   }
 
   async fetchAllTableData() {
+    const rows = this.table.locator("tbody tr");
+    const rowCount = await rows.count();
 
-    const rows = await this.table.locator("tbody tr").all();
-
-    for (let i = 1; i < rows.length; i++) {   // skip header
-
-      const cols = await rows[i].locator("td").all();
-
-      const book = await cols[0].innerText();
-      const author = await cols[1].innerText();
-      const subject = await cols[2].innerText();
-      const price = await cols[3].innerText();
-
-      console.log(`Book: ${book} | Author: ${author} | Subject: ${subject} | Price: ${price}`);
+    for (let i = 1; i < rowCount; i++) {   // skip header
+      const cols = rows.nth(i).locator("td");
+      const colCount = await cols.count();
+      if (colCount >= 4) {
+        const book = await cols.nth(0).innerText();
+        const author = await cols.nth(1).innerText();
+        const subject = await cols.nth(2).innerText();
+        const price = await cols.nth(3).innerText();
+        
+        console.log(`Book: ${book} | Author: ${author} | Subject: ${subject} | Price: ${price}`);
+      }
     }
   }
 }
