@@ -29,6 +29,7 @@ export class TablePracticePage {
   async fetchAllTableData() {
     const rows = this.table.locator("tbody tr");
     const rowCount = await rows.count();
+    const tableData: string[] = [];
 
     for (let i = 1; i < rowCount; i++) {   // skip header
       const cols = rows.nth(i).locator("td");
@@ -39,8 +40,9 @@ export class TablePracticePage {
         const subject = await cols.nth(2).innerText();
         const price = await cols.nth(3).innerText();
         
-        console.log(`Book: ${book} | Author: ${author} | Subject: ${subject} | Price: ${price}`);
+        tableData.push(`Book: ${book} | Author: ${author} | Subject: ${subject} | Price: ${price}`);
       }
     }
+    console.info(tableData.join("\\n"));
   }
 }

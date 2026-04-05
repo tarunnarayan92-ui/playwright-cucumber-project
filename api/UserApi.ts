@@ -6,7 +6,7 @@ export class UsersApi {
 
   async init() {
     this.apiContext = await request.newContext({
-      baseURL: "https://reqres.in",
+      baseURL: "https://jsonplaceholder.typicode.com",
       extraHTTPHeaders: {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept": "application/json"
@@ -15,12 +15,12 @@ export class UsersApi {
   }
 
   async getUsers() {
-    const response = await this.apiContext.get("/api/users?page=2");
+    const response = await this.apiContext.get("/users");
     return response;
   }
 
   async createUser(name: string, job: string) {
-    const response = await this.apiContext.post("/api/users", {
+    const response = await this.apiContext.post("/users", {
       data: {
         name,
         job

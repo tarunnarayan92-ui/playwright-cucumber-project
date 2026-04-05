@@ -31,17 +31,15 @@ export class OrangeHRMLoginPage {
   }
 
   async clickSocialLink(network: string) {
-    const pagePromise = this.page.context().waitForEvent('page');
-    if (network === 'LinkedIn') {
-      await this.page.locator('a[href*="linkedin.com"]').click();
-    } else if (network === 'Facebook') {
-      await this.page.locator('a[href*="facebook.com"]').click();
-    } else if (network === 'Twitter') {
-      await this.page.locator('a[href*="twitter.com"]').click();
-    } else if (network === 'YouTube') {
-      await this.page.locator('a[href*="youtube.com"]').click();
+    let locator = this.page.locator(`a[href*="${network.toLowerCase()}.com"]`);
+    if (network === 'YouTube') {
+      locator = this.page.locator('a[href*="youtube.com"]');
     }
-    const newPage = await pagePromise;
+    
+    const [newPage] = await Promise.all([
+      this.page.context().waitForEvent('page'),
+      locator.click()
+    ]);
     await newPage.waitForLoadState();
     await newPage.close();
   }

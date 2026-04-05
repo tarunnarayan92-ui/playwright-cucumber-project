@@ -28,19 +28,19 @@ export class TableValidationPage {
   }
 
   async validateAscendingOrder() {
-    const names = await this.getLastNames();
-
-    const sorted = [...names].sort();
-
-    expect(names).toEqual(sorted);
+    await expect(async () => {
+      const names = await this.getLastNames();
+      const sorted = [...names].sort();
+      expect(names).toEqual(sorted);
+    }).toPass();
   }
 
   async validateDescendingOrder() {
-    const names = await this.getLastNames();
-
-    const sorted = [...names].sort().reverse();
-
-    expect(names).toEqual(sorted);
+    await expect(async () => {
+      const names = await this.getLastNames();
+      const sorted = [...names].sort().reverse();
+      expect(names).toEqual(sorted);
+    }).toPass();
   }
 
   async validateEmailFormat() {
