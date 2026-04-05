@@ -14,6 +14,7 @@
     "test:alerts": "cucumber-js --tags \"@alerts\" && node generate-report.js",
     "test:api": "cucumber-js --tags \"@api\" && node generate-report.js",
     "test:iframe": "cucumber-js --tags \"@iframe\" && node generate-report.js",
+    "test:orangehrm": "cucumber-js --tags \"@orangehrm\" && node generate-report.js",
     "test:login": "cucumber-js --tags \"@login\" && node generate-report.js",
     "test:inventory": "cucumber-js --tags \"@inventory\" && node generate-report.js",
     "test:checkout": "cucumber-js --tags \"@checkout\" && node generate-report.js",
