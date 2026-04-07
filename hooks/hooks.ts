@@ -6,6 +6,7 @@ import {
   Browser,
   BrowserContext,
   Page,
+  request,
 } from "@playwright/test";
 import fs from "fs";
 
@@ -55,9 +56,14 @@ Before(async function () {
   page.setDefaultNavigationTimeout(60000);
   page.setDefaultTimeout(60000);
 
+  const apiContext = await request.newContext({
+    baseURL: "https://jsonplaceholder.typicode.com",
+  });
+
   this.browser = browser;
   this.context = context;
   this.page = page;
+  this.apiContext = apiContext;
 });
 
 After({ timeout: 120 * 1000 }, async function (scenario) {
@@ -74,4 +80,8 @@ After({ timeout: 120 * 1000 }, async function (scenario) {
   await page.close();
   await context.close();
   await browser.close();
+
+  if (this.apiContext) {
+    await this.apiContext.dispose();
+  }
 });
